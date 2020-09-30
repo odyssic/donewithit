@@ -12,12 +12,17 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 // import ViewImageScreen from './app/screens/ViewImageScreen';
 // import WelcomeScreen from './app/screens/WelcomeScreen';
 import Screen from './app/components/Screen';
+import ListItem from './app/components/ListItem';
 
 export default function App() {
     return (
 
         <Screen>
-            <Icon name='email' size={50} backgroundColor='red' iconColor='white'></Icon>
+            <ListItem
+                title='my Title'
+                subTitle="subtitle"
+                ImageComponent={<Icon name='email' />}
+            ></ListItem>
         </Screen>
 
     )
