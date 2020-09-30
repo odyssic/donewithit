@@ -1,45 +1,76 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, FlatList } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import Screen from "../components/Screen";
 import colors from '../config/colors';
+import ListItem from '../components/ListItem';
+import Icon from '../components/Icon';
+import ListItemSeparator from '../components/ListItemSeparator';
+
+
+const menuItems = [
+    {
+        title: "My Listings",
+        icon: {
+            name: "format-list-bulleted",
+            backgroundColor: colors.primary
+        }
+    },
+    {
+        title: "My Messages",
+        icon: {
+            name: "email",
+            backgroundColor: colors.secondary
+        }
+    }
+]
+
+
 
 export default function AccountScreen() {
     return (
-        <Screen>
+        <Screen style={styles.screen}>
             <View style={styles.container}>
-                <MaterialCommunityIcons
-                    name='format-list-bulleted'
-                    color={colors.primary}
-                    size={35}></MaterialCommunityIcons>
-                <Text>'Test'</Text>
+                <ListItem
+                    title="Steven"
+                    subTitle="stevenbuddenjr@gmail.com"
+                    image={require('../assets/mosh.jpg')}></ListItem>
             </View>
             <View style={styles.container}>
-                <MaterialCommunityIcons
-                    name='email'
-                    color={colors.secondary}
-                    size={35}></MaterialCommunityIcons>
-                <Text>'Test'</Text>
+                <FlatList
+                    data={menuItems}
+                    keyExtrator={item => menuItems.title}
+                    ItemSeparatorComponent={ListItemSeparator}
+                    renderItem={({ item }) =>
+                        <ListItem
+                            title={item.title}
+                            IconComponent={
+                                <Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />
+                            }
+
+                        />
+
+                    }
+                ></FlatList>
             </View>
-            <View style={styles.container}>
-                <MaterialCommunityIcons
-                    name='logout'
-                    color='#ffe66d'
-                    size={35}></MaterialCommunityIcons>
-                <Text>'Test'</Text>
-            </View>
+            <ListItem
+                title="Logout"
+                IconComponent={
+                    <Icon name="logout" backgroundColor="#ffe66d"
+                    />}
+            />
+
         </Screen>
     )
 }
 
 const styles = StyleSheet.create({
 
-    button: {
-
-    },
     container: {
-
+        marginVertical: 20,
+    },
+    screen: {
+        backgroundColor: colors.light,
 
     }
-
 })
