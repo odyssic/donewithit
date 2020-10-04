@@ -1,17 +1,13 @@
 import React from 'react';
 import { StyleSheet, Image } from 'react-native';
-import AppTextInput from '../components/AppTextInput';
-import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import AppButton from '../components/AppButton'
-import AppText from '../components/AppText';
-import defaultStyles from '../config/styles'
-import ErrorMessage from '../components/ErrorMessage';
-import parseErrorStack from 'react-native/Libraries/Core/Devtools/parseErrorStack';
-import Screen from '../components/Screen'
+
+import AppForm from '../components/AppForm';
 import AppFormField from '../components/AppFormField';
+import Screen from '../components/Screen';
 import SubmitButton from '../components/SubmitButton';
+
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
@@ -19,7 +15,6 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function LoginScreen() {
-
 
     return (
         <Screen style={styles.container}>
@@ -29,7 +24,7 @@ export default function LoginScreen() {
             />
 
             <AppForm
-                initalValues={{ email: "", password: "" }}
+                initialValues={{ email: "", password: "", }}
                 onSubmit={(values) => console.log(values)}
                 validationSchema={validationSchema}
 
@@ -62,7 +57,6 @@ export default function LoginScreen() {
 
 
             </AppForm>
-
         </Screen >
     );
 }
