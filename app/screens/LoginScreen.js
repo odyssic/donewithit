@@ -27,45 +27,43 @@ export default function LoginScreen() {
                 source={require("../assets/logo-red.png")}
                 style={styles.logo}
             />
-            <Formik
-                initialValues={{ email: '', password: '' }}
-                onSubmit={values => console.log(values)}
+
+            <AppForm
+                initalValues={{ email: "", password: "" }}
+                onSubmit={(values) => console.log(values)}
                 validationSchema={validationSchema}
 
             >
-                {() => (
-                    <>
-                        <AppFormField
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            icon="email"
-                            keyboardType="email-address"
-                            name="email"
-                            placeholder="Email"
-                            textContentType="emailAddress"
-                        />
+                <AppFormField
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    icon="email"
+                    keyboardType="email-address"
+                    name="email"
+                    placeholder="Email"
+                    textContentType="emailAddress"
+                />
 
-                        <AppFormField
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            icon="lock"
-                            name="password"
-                            placeholder="password"
-                            secureTextEntry
-                            textContentType="password"
+                <AppFormField
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    icon="lock"
+                    name="password"
+                    placeholder="password"
+                    secureTextEntry
+                    textContentType="password"
 
-                        />
+                />
 
-                        <SubmitButton
-                            title="Login"
+                <SubmitButton
+                    title="Login"
 
-                        />
-                    </>
-                )}
+                />
 
-            </Formik>
 
-        </Screen>
+            </AppForm>
+
+        </Screen >
     );
 }
 
