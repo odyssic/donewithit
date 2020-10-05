@@ -9,6 +9,7 @@ import { AppForm, AppFormField, SubmitButton } from '../components/forms';
 
 
 const validationSchema = Yup.object().shape({
+    name: Yup.string().required().min(5).label("Name"),
     email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password")
 });
@@ -28,6 +29,17 @@ export default function LoginScreen() {
                 validationSchema={validationSchema}
 
             >
+
+                <AppFormField
+                    autoCapitalize="words"
+                    autoCorrect={false}
+                    icon="account"
+                    keyboardType="default"
+                    name="name"
+                    placeholder="Name"
+                    textContentType="name"
+                />
+
                 <AppFormField
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -43,7 +55,7 @@ export default function LoginScreen() {
                     autoCorrect={false}
                     icon="lock"
                     name="password"
-                    placeholder="Password"
+                    placeholder="password"
                     secureTextEntry
                     textContentType="password"
 
