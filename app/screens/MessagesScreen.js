@@ -1,11 +1,11 @@
-// hook, starts with use
 import React, { useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 import Screen from "../components/Screen";
-import ListItem from "../components/ListItem";
-import ListItemSeparator from "../components/ListItemSeparator";
-import ListItemDeleteAction from "../components/ListItemDeleteAction";
+import ListItem from "../components/lists/ListItem";
+import ListItemSeparator from "../components/lists/ListItemSeparator";
+import ListItemDeleteAction from "../components/lists/ListItemDeleteAction";
+import { FlatList } from "react-native-gesture-handler";
 
 const initialMessages = [
     {
@@ -22,7 +22,7 @@ const initialMessages = [
     },
 ];
 
-function MessagesScreen(props) {
+export default function MessagesScreen() {
 
     const [messages, setMessages] = useState(initialMessages);
     const [refreshing, setRefreshing] = useState(false);
@@ -34,7 +34,7 @@ function MessagesScreen(props) {
     };
 
     return (
-        <Screen>
+        <Screen style={styles.container}>
             <FlatList
                 data={messages}
                 keyExtractor={(message) => message.id.toString()}
@@ -66,6 +66,11 @@ function MessagesScreen(props) {
     );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
 
-export default MessagesScreen;
+    container: {
+        padding: 10,
+    }
+});
+
+

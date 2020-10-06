@@ -6,12 +6,12 @@ import {
     TouchableOpacity,
     TouchableHighlight,
 } from "react-native";
-import AppText from "./AppText";
+import AppText from "../AppText";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
-import colors from "../config/colors";
+import colors from "../../config/colors";
 
-function ListItem({
+export default function ListItem({
     title,
     subTitle,
     image,
@@ -59,4 +59,3 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ListItem;
