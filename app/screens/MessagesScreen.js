@@ -16,8 +16,8 @@ const initialMessages = [
     },
     {
         id: 2,
-        title: "T2",
-        description: "D2",
+        title: "This is the happy time where people ogo running by Colderidge and rock the empathy by the brands and denizens",
+        description: "DFortunately chapel hill is a bastion of well worn sailors and the people we are here",
         image: require("../assets/mosh.jpg"),
     },
 ];

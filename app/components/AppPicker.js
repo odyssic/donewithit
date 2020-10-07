@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import {
+    Button,
+    FlatList,
+    Modal,
     View,
     StyleSheet,
     TouchableWithoutFeedback,
-    Modal,
-    Button,
-    FlatList,
+
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -16,13 +17,13 @@ import PickerItem from "./PickerItem";
 
 
 
-export default function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
+export default function AppPicker({ icon, items, onSelectItem, PickerItemComponent = PickerItem, placeholder, selectedItem, width = "100%" }) {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <>
             <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-                <View style={styles.container}>
+                <View style={[styles.container, { width }]}>
                     {icon && (
                         <MaterialCommunityIcons
                             name={icon}
@@ -49,12 +50,15 @@ export default function AppPicker({ icon, items, onSelectItem, placeholder, sele
                         data={items}
                         keyExtractor={(item) => item.value.toString()}
                         renderItem={({ item }) => (
-                            <PickerItem
+                            <PickerItemComponent
+                                item={item}
                                 label={item.label}
                                 onPress={() => {
                                     setModalVisible(false);
                                     onSelectItem(item);
-                                }}
+                                }
+                                }
+
                             />
                         )}
                     />
@@ -69,7 +73,6 @@ const styles = StyleSheet.create({
         backgroundColor: defaultStyles.colors.light,
         borderRadius: 25,
         flexDirection: "row",
-        width: "100%",
         padding: 15,
         marginVertical: 10,
     },
@@ -78,9 +81,7 @@ const styles = StyleSheet.create({
     },
     placeholder: {
         color: defaultStyles.colors.medium,
-        flex: 1
-
-
+        flex: 1,
     },
     text: {
         flex: 1,
