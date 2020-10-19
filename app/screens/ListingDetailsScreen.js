@@ -5,7 +5,7 @@ import colors from "../config/colors";
 import ListItem from "../components/lists/ListItem";
 import Text from "../components/AppText";
 
-function ListingDetailsScreen(props) {
+export default function ListingDetailsScreen() {
   return (
     <View>
       <Image style={styles.image} source={require("../assets/jacket.jpg")} />
@@ -47,4 +47,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListingDetailsScreen;
