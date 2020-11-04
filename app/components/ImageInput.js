@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react'
+import React, {useEffect} from 'react'
 import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Alert } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
@@ -43,7 +43,7 @@ export default function ImageInput({ imageUri, onChangeImage }) {
          
           
         } catch (error) {
-          console.log('Error Reading an Image')
+          console.log('Error Reading an Image', error)
           
         }
         
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: colors.light,
         borderRadius: 15,
-        justifyContent: 'center',
         height: 100,
+        justifyContent: 'center',
         overflow: 'hidden',
         width: 100,
     },
     image: {
+        height: '100%',
         width: '100%',
-        height: '100%'
     },
 })

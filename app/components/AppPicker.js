@@ -12,7 +12,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Text from "./AppText";
 import defaultStyles from "../config/styles";
 import PickerItem from "./PickerItem";
-import Screen from "./AppScreen";
+import Screen from "./Screen";
 
 export default function AppPicker({
     icon,
@@ -30,10 +30,12 @@ export default function AppPicker({
         >
         <
         TouchableWithoutFeedback onPress = {
-            () => setModalVisible(true) } >
+            () => setModalVisible(true)
+        } >
         <
         View style = {
-            [styles.container, { width }] } > {
+            [styles.container, { width }]
+        } > {
             icon && ( <
                 MaterialCommunityIcons name = { icon }
                 size = { 20 }
@@ -53,8 +55,8 @@ export default function AppPicker({
         MaterialCommunityIcons name = "chevron-down"
         size = { 20 }
         color = { defaultStyles.colors.medium }
-        /> <
-        /View> <
+        /> < /
+        View > <
         /TouchableWithoutFeedback> <
         Modal visible = { modalVisible }
         animationType = "slide" >
@@ -63,11 +65,13 @@ export default function AppPicker({
         <
         Button title = "Close"
         onPress = {
-            () => setModalVisible(false) }
+            () => setModalVisible(false)
+        }
         /> <
         FlatList data = { items }
         keyExtractor = {
-            (item) => item.value.toString() }
+            (item) => item.value.toString()
+        }
         numColumns = { numberOfColumns }
         renderItem = {
             ({ item }) => ( <
@@ -82,10 +86,10 @@ export default function AppPicker({
                 />
             )
         }
-        /> <
-        /Screen> <
-        /Modal> <
-        />
+        /> < /
+        Screen > <
+        /Modal> < /
+        >
     );
 }
 
