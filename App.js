@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Image } from "react-native";
+import React from 'react';
 
-import * as ImagePicker from 'expo-image-picker';
+import AuthNavigator from './app/navigation/AuthNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import NavigationTheme from './app/navigation/NavigationTheme';
+import AppNavigator from './app/navigation/AppNavigator';
 
-import Button from './app/components/Button';
-import Screen from './app/components/Screen';
-import ImageInput from './app/components/ImageInput';
-
-import * as Permissions from 'expo-permissions';
-import { askAsync } from 'expo-permissions';
-import ImageInputList from './app/components/ImageInputList';
-import ListingEditScreen from './app/screens/ListingEditScreen';
 
 export default function App() {
 
-return <ListingEditScreen/>
+    return (
+        <NavigationContainer theme={NavigationTheme}>
+        <AppNavigator/>
+        </NavigationContainer>
+    )
 
 }
