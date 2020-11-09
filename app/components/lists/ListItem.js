@@ -3,10 +3,10 @@ import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
-import Text from "../AppText";
+import AppText from "../AppText";
 import colors from "../../config/colors";
 
-function ListItem({
+export default function ListItem({
     title,
     subTitle,
     image,
@@ -14,36 +14,26 @@ function ListItem({
     onPress,
     renderRightActions,
 }) {
-    return ( <
-        Swipeable renderRightActions = { renderRightActions } >
-        <
-        TouchableHighlight underlayColor = { colors.light }
+    return ( <Swipeable renderRightActions={renderRightActions}>
+        <TouchableHighlight underlayColor={colors.light}
         onPress = { onPress } >
-        <
-        View style = { styles.container } > { IconComponent } {
-            image && < Image style = { styles.image }
-            source = { image }
-            />} <
-            View style = { styles.detailsContainer } >
-                <
-                Text style = { styles.title }
-            numberOfLines = { 1 } > { title } <
-                /Text> {
-                    subTitle && ( <
-                        Text style = { styles.subTitle }
-                        numberOfLines = { 2 } > { subTitle } <
-                        /Text>
+        <View style={styles.container}>{IconComponent}{
+            image && <Image style={styles.image}
+            source={image}
+            />}<View style={styles.detailsContainer}>
+                    <AppText style={styles.title} numberOfLines={1}>{title}</AppText>
+                    {subTitle && (
+                        <AppText style={styles.subTitle} numberOfLines={2}>{subTitle}</AppText>
                     )
-                } <
-                /View> <
+                }</View><
                 MaterialCommunityIcons
             color = { colors.medium }
             name = "chevron-right"
-            size = { 25 }
-            /> <
-            /View> <
-            /TouchableHighlight> <
-            /Swipeable>
+            size = {25}
+                />
+            </View>
+        </TouchableHighlight>
+    </Swipeable>
         );
     }
 
@@ -68,8 +58,7 @@ function ListItem({
             color: colors.medium,
         },
         title: {
-            fontWeight: "500",
+            fontWeight:"500",
         },
     });
 
-    export default ListItem;
