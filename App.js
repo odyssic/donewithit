@@ -10,10 +10,11 @@ import AccountScreen from './app/screens/AccountScreen';
 export default function App() {
 
     return (
+        <AccountScreen/>
         
-        <NavigationContainer theme={NavigationTheme}>
-        <AppNavigator/>
-        </NavigationContainer>
+        // <NavigationContainer theme={NavigationTheme}>
+        // <AppNavigator/>
+        // </NavigationContainer>
     )
 
 }
