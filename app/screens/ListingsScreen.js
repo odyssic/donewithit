@@ -1,41 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList, StyleSheet } from 'react-native';
 
-import Card from '../components/Card'
+import ActivityIndicator from '../components/ActivityIndicator';
+import AppText from '../components/AppText';
+import Button from '../components/Button';
+import Card from '../components/Card';
 import colors from '../config/colors';
 import routes from '../navigation/routes';
-import Screen from '../components/Screen'
+import Screen from '../components/Screen';
+import listingsApi from '../api/listings';
+import useApi from '../hooks/useApi';
 
-const listings = [
-    {
-        id: 1,
-        title: 'Red Jacked for Sale',
-        price: '100',
-        image: require('../assets/jacket.jpg')
-    },
-    {
-        id: 2,
-        title: 'Couch in Great Condition',
-        price: '1000',
-        image: require('../assets/couch.jpg')
-    }]
 
-export default function ListingsScreen({navigation}) {
+export default function ListingsScreen({ navigation }) {
+    
+    const getListingsApi = useApi(listingsApi.getListings);
+      
+        useEffect(() => {
+          getListingsApi.request();
+        }, []);
     return (
-
-        <Screen style={styles.screen}>
-            <FlatList
-                data={listings}
+   <Screen style={styles.screen}>
+            {getListingsApi.error && (
+                <>
+                    <AppText>Couldn't retrieve the listings</AppText>
+                    <Button title="retry" onPress={ loadListings } />
+                </>)}
+            
+            <ActivityIndicator visible={getListingsApi.loading} />
+             <FlatList
+                data={getListingsApi.data}
                 keyExtractor={listing => listing.id.toString()}
                 renderItem={({ item }) =>
                     <Card
                         title={item.title}
                         subTitle={"$" + item.price}
-                        image={item.image}
+                        imageUrl={item.images[0].url}
                         onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)
-                        
-                    }/>
-                } />
+                    }/> 
+                } /> 
         </Screen>
 
     )
