@@ -5,10 +5,11 @@ import * as Yup from "yup";
 import AppForm from "../components/forms/AppForm";
 import AppFormField from "../components/forms/AppFormField"; 
 import AppFormPicker from "../components/forms/AppFormPicker";
-import SubmitButton from "../components/forms/SubmitButton"; 
 import CategoryPickerItem from "../components/CategoryPickerItem";
-import Screen from "../components/Screen";
 import FormImagePicker from "../components/forms/FormImagePicker";
+import listingsApi from '../api/listings';
+import Screen from "../components/Screen";
+import SubmitButton from "../components/forms/SubmitButton"; 
 import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
@@ -79,6 +80,14 @@ const categories = [
 function ListingEditScreen() {
   const location = useLocation();
 
+  const handleSubmit = async listing => {
+    const result = await listingsApi.addListing({ ...listing, location })
+    if (!result.ok)
+      return alert('Could not save the listing.');
+    alert('Success');
+    
+  }
+
   return (
     <Screen style={styles.container}>
       <AppForm
@@ -89,7 +98,7 @@ function ListingEditScreen() {
           category: null,
           images: [],
         }}
-        onSubmit={(values) => console.log(location)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />

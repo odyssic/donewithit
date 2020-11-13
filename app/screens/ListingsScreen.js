@@ -27,7 +27,7 @@ export default function ListingsScreen({ navigation }) {
                     <Button title="retry" onPress={ loadListings } />
                 </>)}
             
-            <ActivityIndicator visible={getListingsApi.loading} />
+            {/* <ActivityIndicator visible={getListingsApi.loading} /> */}
              <FlatList
                 data={getListingsApi.data}
                 keyExtractor={listing => listing.id.toString()}
