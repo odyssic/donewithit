@@ -41,6 +41,9 @@ export default function ListingsScreen({ navigation }) {
                 } /> 
         </Screen>
 
+
+
+
     )
 }
 
@@ -48,5 +51,7 @@ const styles = StyleSheet.create({
     screen: {
         padding: 20,
         backgroundColor: colors.light,
+
+
     }
 })
